@@ -4,7 +4,7 @@ import App from '../../src/components/app';
 // Use 'describe' to group together similar tests
 describe('App', () => {
   // Use 'it' to test a single attribute of a target
-  it('show the correct text', () => {
+  it('shows the correct text', () => {
     // Create an instance of App
     const component = renderComponent(App);
 
