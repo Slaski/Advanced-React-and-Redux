@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import requireAuth from './require_authentication';
 
 class Resources extends Component {
   render() {
@@ -15,4 +16,4 @@ class Resources extends Component {
   }
 }
 
-export default Resources;
+export default requireAuth(Resources);
