@@ -13,6 +13,7 @@ mongoose.connect('mongodb://localhost/auth');
 const app = express();
 
 app.use(morgan('combined'));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ type: '*/*' }));
 router(app);
 
