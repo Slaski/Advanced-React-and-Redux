@@ -16,7 +16,7 @@ class Signin extends Component {
     return (
       <fieldset className={className}>
         <label>{field.label}</label>
-        <input className="form-control" type="text" {...field.input} />
+        <input className="form-control" type={field.type} {...field.input} />
         <div className="text-help">{touched ? error : ''}</div>
       </fieldset>
     );
@@ -27,8 +27,8 @@ class Signin extends Component {
 
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        <Field label="Email" name="email" component={this.renderField} />
-        <Field label="Password" name="password" component={this.renderField} />
+        <Field label="Email" name="email" component={this.renderField} type="text" />
+        <Field label="Password" name="password" component={this.renderField} type="password" />
         <button type="submit" className="btn btn-primary">
           Sign in
         </button>
