@@ -52,7 +52,19 @@ class Signup extends Component {
 function validate({ email, password, confirmPassword }) {
   const errors = {};
 
-  if (password !== confirmPassword) {
+  if (!email) {
+    errors.email = 'Please enter a email';
+  }
+
+  if (!password) {
+    errors.password = 'Please enter a password';
+  }
+
+  if (!confirmPassword) {
+    errors.confirmPassword = 'Please enter a password confirmation';
+  }
+
+  if (password && password !== confirmPassword) {
     errors.confirmPassword = 'Password must match';
   }
 
