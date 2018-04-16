@@ -1,19 +1,35 @@
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 
 class Signin extends Component {
-  render() {
+  handleFormSubmit(values) {
+    console.log(values);
+    // Need to do something to log the user in
+  }
+
+  renderField(field) {
+    const {
+      meta: { touched, error }
+    } = field;
+    const className = `form-group ${touched && error ? 'has-danger' : ''}`;
+
     return (
-      <form>
-        <fieldset className="form-group">
-          <label>Email:</label>
-          <input type="text" className="form-control" />
-        </fieldset>
-        <fieldset className="form-group">
-          <label>Password:</label>
-          <input type="password" className="form-control" />
-        </fieldset>
-        <button action="submit" className="btn btn-primary">
+      <fieldset className={className}>
+        <label>{field.label}</label>
+        <input className="form-control" type="text" {...field.input} />
+        <div className="text-help">{touched ? error : ''}</div>
+      </fieldset>
+    );
+  }
+
+  render() {
+    const { handleSubmit } = this.props;
+
+    return (
+      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+        <Field label="Email" name="email" component={this.renderField} />
+        <Field label="Password" name="password" component={this.renderField} />
+        <button type="submit" className="btn btn-primary">
           Sign in
         </button>
       </form>
